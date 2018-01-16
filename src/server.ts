@@ -4,7 +4,7 @@ import * as morgan from 'morgan';
 import * as cors from 'cors';
 import { json, urlencoded } from 'body-parser';
 import { Express } from 'express';
-import * as routes from './routes/_index';
+import initRoutes from './routes/_index';
 
 const PORT: number = 3000;
 
@@ -35,7 +35,7 @@ export class Server {
             winston.log('info', '--> Server successfully started at port %d', PORT);
         });
 
-        routes.initRoutes(this.app);
+        initRoutes(this.app);
     }
 
     getApp() {

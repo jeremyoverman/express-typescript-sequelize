@@ -58,7 +58,7 @@ export class Model<I, A> {
      *
      * @param data The value or values to be serialized
      */
-    serialize(data, opts: JSONAPISerializerOpts) {
+    serialize(data, opts?: JSONAPISerializerOpts) {
         opts = Object.assign({
             attributes: this.attributeArray
         }, opts);

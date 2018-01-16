@@ -6,10 +6,8 @@ let packages = new Packages();
 
 router.get('/packages', (req, res) => packages.getPackages(req, res));
 
-router.get('/', (req, res) => {
-    res.send({
-        message: 'v1 route'
-    });
-});
+router.get('/', (req, res) => res.send({
+    message: 'v1 route'
+}));
 
 export default router;
