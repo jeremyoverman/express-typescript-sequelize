@@ -1,14 +1,21 @@
-import * as fs from 'fs';
-import * as path from 'path';
+// General setup stuff. No need to edit.
 import * as Sequelize from 'sequelize';
 
-import PackageModel from './packages';
+const config = require('../config/config.json')[process.env.NODE_ENV];
+export const sequelize = new Sequelize(config['database'], config['username'], config['password'], config);
 
-const config = require('../config/config.json');
-const dbConfig = config[process.env.NODE_ENV];
+/*
+ * Import and initialize all pakages here. Each group of
+ * import/exports should follow the following scheme:
+ *
+ * Example:
+ *
+ *    import AwesomeModel from './awesome';
+ *    export const Awesome = new AwesomeModel().setup(sequelize);
+ *    export { AwesomeInstance, AwesomeAttributes } from './awesome';
+ */
 
-export const sequelize = new Sequelize(dbConfig['database'], dbConfig['username'], dbConfig['password'], dbConfig);
-
-export let Package = PackageModel.setup(sequelize);
-
-export { PackageInstance, PackageAttributes } from './packages';
+// Package
+import PackageModel from './package';
+export const Package = new PackageModel().setup(sequelize);
+export { PackageInstance, PackageAttributes } from './package';

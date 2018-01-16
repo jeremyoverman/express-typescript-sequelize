@@ -1,8 +1,10 @@
-import * as packages from '../../dao/packages';
+import * as db from '../../sequelize/models/_index';
 
 export default class Packages {
+    dao = db.Package.dao;
+
     getPackages(req, res) {
-        packages.getAll().then((results) => {
+        this.dao.getAll().then((results) => {
             res.send(results);
         });
     }
